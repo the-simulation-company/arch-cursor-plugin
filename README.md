@@ -6,16 +6,20 @@ Built by [Foothill Labs](https://foothill.sh).
 
 It combines an always-applied standing order with a narrowly scoped skill. The rule routes PR-authoring work to the skill.
 
-## Install
+## Install manually from GitHub
 
-Clone the plugin into Cursor's local plugin directory:
+1. Clone the plugin into Cursor's local plugin directory:
 
 ```bash
+mkdir -p ~/.cursor/plugins/local
 git clone https://github.com/the-simulation-company/arch-cursor-plugin.git \
   ~/.cursor/plugins/local/arch-cursor-plugin
 ```
 
-Restart Cursor or run **Developer: Reload Window**, then confirm the plugin under **Customize**.
+2. Restart Cursor or run **Developer: Reload Window**.
+3. Open **Customize** and confirm that `arch-cursor-plugin` is available.
+
+On managed Team or Enterprise workspaces, an administrator may need to enable **Allow Local Plugin Imports** first.
 
 ## What it adds
 
