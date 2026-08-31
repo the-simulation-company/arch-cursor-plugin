@@ -17,7 +17,9 @@ Capture the useful product context:
 - potential failure modes or behavioral boundaries exposed by the change, grounded in the changed code or tests; and
 - a concise set of high-value E2E coverage areas for the changed behavior and those risks.
 
-Preserve human-authored content and every repository-template section. Fit the context into the existing template. When no template determines the structure, use only the headings that help:
+Treat these as information requirements, not a required PR-description format. Follow the repository's PR template, local authoring instructions, and any other applicable PR-writing skill. Preserve human-authored content and every existing section. Put each required detail in the most natural existing section without duplicating it. Add a compact new section such as `QA context` or `E2E considerations` only when important information has no natural place in the required format.
+
+When no existing format determines the structure, use only the headings that help:
 
 ```markdown
 ## User-visible change
