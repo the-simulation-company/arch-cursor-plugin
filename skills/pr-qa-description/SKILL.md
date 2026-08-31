@@ -27,6 +27,4 @@ Preserve human-authored content and every repository-template section. Fit the c
 
 Omit irrelevant or empty headings. Exact UI copy, product rationale, test evidence, or a scope note such as "No browser-visible behavior" may be included when it materially clarifies the change.
 
-Do not invent product behavior, navigation, setup, variants, edge cases, or test scenarios. If important navigation or setup context cannot be inferred, leave a short, clearly marked question for the author. Do not add exhaustive file lists, generic implementation summaries, or a complete QA scenario inventory.
-
-This skill only improves the PR description. It must not call Arch, run QA or simulations, invoke an MCP server, or trigger any external workflow.
+Do not invent product behavior, navigation, setup, variants, edge cases, or test scenarios. Before treating navigation or setup as unknown, keep tracing the relevant routes, component callers, authentication and role checks, feature flags, fixtures, tests, seed data, and nearby documentation. Leave a short, clearly marked question for the author only when the answer depends on inaccessible code or data, unavailable environment configuration, or product intent that is not represented in the repository; state exactly what information is missing. Do not add exhaustive file lists, generic implementation summaries, or a complete QA scenario inventory.

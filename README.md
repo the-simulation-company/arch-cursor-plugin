@@ -2,23 +2,20 @@
 
 A Cursor plugin that helps authors write PR descriptions with enough grounded product context for Arch to turn the description into useful goals later.
 
+Published by [Foothill Labs](https://foothill.sh).
+
 It combines an always-applied standing order with a narrowly scoped skill. The rule routes only PR-authoring work to the skill; ordinary coding work is unaffected. The plugin does not run QA, simulations, MCP tools, or any Arch workflow.
 
 ## Install
 
-Install for one project:
+Clone the plugin into Cursor's local plugin directory:
 
 ```bash
-mkdir -p .cursor/skills && \
-  curl -sSL https://github.com/the-simulation-company/arch-cursor-plugin/archive/refs/heads/main.tar.gz \
-  | tar -xz --strip-components=3 -C .cursor/skills 'arch-cursor-plugin-main/.cursor/skills'
-
-mkdir -p .cursor/rules && \
-  curl -sSL -o .cursor/rules/pr-qa-description-standing-order.mdc \
-  https://raw.githubusercontent.com/the-simulation-company/arch-cursor-plugin/main/.cursor/rules/pr-qa-description-standing-order.mdc
+git clone https://github.com/the-simulation-company/arch-cursor-plugin.git \
+  ~/.cursor/plugins/local/arch-cursor-plugin
 ```
 
-For a global install, copy `.cursor/skills/pr-qa-description` into `~/.cursor/skills/`. Cursor global rules are configured in **Cursor Settings → Rules → User Rules**; paste the body of `.cursor/rules/pr-qa-description-standing-order.mdc` there.
+Restart Cursor or run **Developer: Reload Window**, then confirm the plugin under **Customize**. The same native package can be installed from Cursor Marketplace after marketplace review.
 
 ## What it adds
 
@@ -34,6 +31,6 @@ Human-authored and template sections are preserved. Missing facts are marked for
 
 ## Local verification
 
-Copy or symlink the `.cursor` contents into a test project, reload Cursor, and ask it to create or edit a PR description without naming the skill. Confirm that product context is added, the repository template is preserved, and no external QA action occurs.
+Run Cursor Agent with `--plugin-dir /absolute/path/to/arch-cursor-plugin`, or symlink the repository into `~/.cursor/plugins/local/arch-cursor-plugin`. Ask it to create or edit a PR description without naming the skill. Confirm that product context is added, the repository template is preserved, and no external QA action occurs.
 
 Use [`fixtures/pr-description-cases.md`](fixtures/pr-description-cases.md) for the shared information-level behavior checks.
