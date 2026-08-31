@@ -8,6 +8,8 @@ It combines an always-applied standing order with a narrowly scoped skill. The r
 
 ## Install manually from GitHub
 
+This installs the plugin for the current Cursor user and makes it available across all projects and repositories.
+
 1. Clone the plugin into Cursor's local plugin directory:
 
 ```bash
