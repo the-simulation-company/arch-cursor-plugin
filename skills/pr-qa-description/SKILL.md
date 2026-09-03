@@ -40,3 +40,26 @@ Use the following labels when they fit the available evidence and format. When r
 Omit irrelevant or empty labels. Exact UI copy, product rationale, test evidence, or a scope note such as "No browser-visible behavior" may be included when it materially clarifies the change. Keep E2E considerations at the behavior level: identify the flow, state transition, permission boundary, integration boundary, or failure path worth validating. Do not turn them into detailed test scripts or a complete set of test goals; downstream goal creation decides the exact new or revised goals against the existing goal inventory.
 
 Do not invent product behavior, navigation, setup, variants, failure modes, or E2E coverage. Infer a risk only when it follows from the changed control or data flow, an evidenced behavioral boundary, or a nearby test, and present it as something worth validating rather than as confirmed product behavior. Before treating navigation or setup as unknown, keep tracing the relevant routes, component callers, authentication and role checks, feature flags, fixtures, tests, seed data, and nearby documentation. Leave a short, clearly marked question for the author only when the answer depends on inaccessible code or data, unavailable environment configuration, or product intent that is not represented in the repository; state exactly what information is missing. Do not add exhaustive file lists, generic implementation summaries, a complete QA scenario inventory, or an executable goal set.
+
+
+## Cross-repository deployment coordination
+
+When one logical implementation produces pull requests in more than one repository, coordinate those PRs as one deployment set:
+
+1. Determine the complete repository set from the work performed in the current task. Do not group unrelated PRs.
+2. Create every member as a draft before finalizing any member's description.
+3. Read each canonical URL from GitHub (for example, `gh pr view --json url`); do not construct or guess URLs.
+4. Edit every member so it contains exactly one block in this form:
+
+```markdown
+## Deployment coordination
+- Related PRs:
+    - https://github.com/acme/frontend/pull/123
+    - https://github.com/acme/backend/pull/456
+```
+
+On each PR, omit that PR's own URL and list every other member exactly once. Use only canonical `https://github.com/<owner>/<repository>/pull/<positive-number>` URLs. The block must use the heading and label exactly as shown. It may appear alongside `QA context`, the repository template, and human-authored content; preserve all of them.
+
+After editing, fetch every description again and verify that each member resolves to the same complete set: its own canonical URL plus its listed URLs must equal the full set. Stop and repair the descriptions before marking any PR ready for review if a link is missing, duplicated, malformed, self-referential, or names a PR outside the set.
+
+For a change contained in one repository, omit the deployment coordination block entirely.
