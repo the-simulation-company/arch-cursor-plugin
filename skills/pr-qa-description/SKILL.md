@@ -44,10 +44,9 @@ Omit irrelevant or empty labels. Exact UI copy, product rationale, test evidence
 Give the downstream goal planner enough concrete evidence to design valuable behavior checks without asking it to invent product behavior:
 
 - Describe the real user job and why its result matters, not just the changed page or control.
-- State the business rules and code-backed contracts that govern the result, including relevant state changes, permissions, relationships, data origins, and downstream effects.
-- Name the actual roles, records, starting states, and configuration combinations that materially change behavior. Prefer specific product terms and evidenced examples over generic labels or convenient imagined fixtures.
-- Trace the supported path from the user's entry point through the meaningful action to where its effect is later used, checked, or recovered. Call out information that must remain unchanged.
-- Explain concrete non-trivial risks exposed by the implementation, such as one surface updating without another, a role behaving differently under a permission boundary, or a relationship being lost during reassignment. Do not substitute a shallow presence check unless visibility is itself the behavior at risk.
+- State the business rules and code-backed behavior that govern the result. Name the actual starting state, supported actions, and downstream outcome; include roles, permissions, records, or configuration only when they materially affect this flow.
+- Trace the supported journey across the connected parts of the product a real user would use, including the meaningful decisions, changes, and follow-through. Be specific enough to expose non-trivial combinations that arise naturally in that work.
+- Explain concrete failure risks supported by the implementation. Do not substitute a shallow presence check unless visibility is itself the behavior at risk.
 
 This is context for goal creation, not the final goal design. Keep it proportional to the changed behavior rather than supplying an exhaustive scenario inventory.
 
