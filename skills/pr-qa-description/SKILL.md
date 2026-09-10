@@ -39,6 +39,17 @@ Use the following labels when they fit the available evidence and format. When r
 
 Omit irrelevant or empty labels. Exact UI copy, product rationale, test evidence, or a scope note such as "No browser-visible behavior" may be included when it materially clarifies the change. Keep E2E considerations at the behavior level: identify the flow, state transition, permission boundary, integration boundary, or failure path worth validating. Do not turn them into detailed test scripts or a complete set of test goals; downstream goal creation decides the exact new or revised goals against the existing goal inventory.
 
+## Context for downstream goal creation
+
+Give the downstream goal planner enough concrete evidence to design valuable behavior checks without asking it to invent product behavior:
+
+- Describe the real user job and why its result matters, not just the changed page or control.
+- State the business rules and code-backed behavior that govern the result. Name the actual starting state, supported actions, and downstream outcome; include roles, permissions, records, or configuration only when they materially affect this flow.
+- Trace the supported journey across the connected parts of the product a real user would use, including the meaningful decisions, changes, and follow-through. Be specific enough to expose non-trivial combinations that arise naturally in that work.
+- Explain concrete failure risks supported by the implementation. Do not substitute a shallow presence check unless visibility is itself the behavior at risk.
+
+This is context for goal creation, not the final goal design. Keep it proportional to the changed behavior rather than supplying an exhaustive scenario inventory.
+
 Do not invent product behavior, navigation, setup, variants, failure modes, or E2E coverage. Infer a risk only when it follows from the changed control or data flow, an evidenced behavioral boundary, or a nearby test, and present it as something worth validating rather than as confirmed product behavior. Before treating navigation or setup as unknown, keep tracing the relevant routes, component callers, authentication and role checks, feature flags, fixtures, tests, seed data, and nearby documentation. Leave a short, clearly marked question for the author only when the answer depends on inaccessible code or data, unavailable environment configuration, or product intent that is not represented in the repository; state exactly what information is missing. Do not add exhaustive file lists, generic implementation summaries, a complete QA scenario inventory, or an executable goal set.
 
 
